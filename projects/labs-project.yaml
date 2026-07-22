@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: labs
+  namespace: argocd
+spec:
+  sourceRepos:
+  - https://github.com/devanshpoplii/argocd-enterprise-labs.git
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: labs
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  clusterResourceWhitelist:
+  - group: '' 
+    kind: Namespace
